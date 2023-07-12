@@ -7,7 +7,7 @@ const usuarioSchema = new Schema({
         maxLength:20,
         required:true
     },
-    correo:{
+    email:{
         type:String,
         minLength:2,
         maxLength:20,

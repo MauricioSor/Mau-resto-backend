@@ -8,7 +8,7 @@
     "dev": "nodemon --exec babel-node index.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "Mauricio Soria",
   "license": "ISC",
   "dependencies": {
     "babel-cli": "^6.26.0",

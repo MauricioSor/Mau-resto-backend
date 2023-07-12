@@ -16,7 +16,6 @@ export const obtenerUsuarios = async (req, res) => {
 export const obtenerUsuario = async (req, res) => {
     try {
         //pedir a la BD la lista de productos
-        console.log(req.params.id)
         const usuario = await Usuario.findById(req.params.id);
         res.status(200).json(usuario);
     } catch (error) {
@@ -28,7 +27,6 @@ export const obtenerUsuario = async (req, res) => {
 };
 export const crearUsuario = async (req, res) => {
     try {
-        // console.log(req.body);
         const usuarioNuevo = new Usuario(req.body);
         await usuarioNuevo.save();
         res.status(201).json({
@@ -43,7 +41,7 @@ export const crearUsuario = async (req, res) => {
 };
 export const borrarUsuario = async (req, res) => {
     try {
-        await Usuario.findById(req.params._id);
+        await Usuario.findByIdAndDelete(req.params.id);
         res.status(200).json({
             mensaje: 'El usuario se borró correctamente',
         });
@@ -56,7 +54,7 @@ export const borrarUsuario = async (req, res) => {
 };
 export const editarUsuario = async (req, res) => {
     try {
-        await Usuario.findByIdAndUpdate(req.params._id);
+        await Usuario.findOneAndUpdate({ _id: req.params.id }, req.body, { runValidators: true });
         res.status(200).json({
             mensaje: 'El usuario se editó correctamente',
         });
