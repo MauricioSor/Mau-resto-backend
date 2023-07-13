@@ -10,13 +10,13 @@ const usuarioSchema = new Schema({
     email:{
         type:String,
         minLength:2,
-        maxLength:20,
+        maxLength:30,
         required:true
     },
     contraseña:{
         type:String,
         minLength:2,
-        maxLength:20,
+        maxLength:30,
         required:true
     }
 });

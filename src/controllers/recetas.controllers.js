@@ -67,6 +67,7 @@ export const editarReceta = async (req, res) => {
         if(!errors.isEmpty()){
         return res.status(400).json({
             errores:errors.array()
+            ,Mensaje:errors
         })
         }
         await Receta.findOneAndUpdate({ _id: req.params.id }, req.body, { runValidators: true });

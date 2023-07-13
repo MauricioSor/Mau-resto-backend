@@ -22,13 +22,14 @@ const validarProducto = [
     check("imagen")
     .notEmpty()
     .withMessage("El url de imagen es obligatorio")
-    .matches(/^(https?:\/\/)?(?:[a-zA-Z0-9-]+\.)+[a-zA-Z]{2,7}(?:\/[^/?#]+)+\.(?:png|jpg|jpeg)$/)
+    .matches(/^(https?:\/\/)?[\w-]+(\.[\w-]+)+([\/\w-./?%&=]*)?\.(jpg|jpeg|png|jfif)(\?.*)?$/)
     .withMessage('La URL de imagen debe ser valida'),
     check('categoria')
     .notEmpty()
     .withMessage('La categoria es obligatoria')
-    .isIn(['Bebida caliente','Bebida fria','Simples','Frio','Calientes','Pastas','Sandwich','Postre','Minutas'])
+    .isIn(['Bebida caliente','Bebida fria','Simples','Frio','Calientes','Pastas','Sandwich','Postre','Minutas','Guarnicion'])
     .withMessage('La categoria no es valida')
-    ,(req,res,next)=>{resultadovalidacion(req,res,next)}
+    ,(req,res,next)=>{resultadovalidacion(req,res,next)
+    }
 ]
 export default validarProducto
