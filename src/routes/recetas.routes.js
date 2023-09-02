@@ -7,7 +7,7 @@ import{
     borrarReceta,
     editarReceta
 } from '../controllers/recetas.controllers'
-import validarProducto from "../../helpers/validacionProducto";
+import validarProducto from "../helpers/validacionProducto";
 
 const router = Router();
 router.route('/todas').get(obtenerRecetas)
