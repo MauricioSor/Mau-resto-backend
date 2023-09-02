@@ -12,7 +12,7 @@ import usuariosRouter from './src/routes/usuarios.routes';
 const app = express();
 app.set('port', process.env.PORT || 4004);
 app.listen(app.get('port'),()=>{
-    console.log('estoy en el puerto' +app.get('port'))
+    console.log('estoy en el puerto' +app.get('port')+"Estoy en la BD "+(app.get('name')))
 })
 
 // middlewares
@@ -20,8 +20,9 @@ app.use(cors());
 app.use(express.json()); 
 app.use(morgan('dev'));
 app.use(express.static(path.join(__dirname,'/public')))
-
+console.log()
 //rutas
+//http://localhost:4004/blogRecetas
 //http://localhost:4004/apiRecetas/recetas
 //http://localhost:4004/apiRecetas/auth/users
 app.use('/apiRecetas',recetasRouter);

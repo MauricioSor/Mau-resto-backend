@@ -24,6 +24,12 @@ const recetaSchema = new Schema({
         minLength:2,
         maxLength:20,
         required:true
+    },
+    descripcion:{
+        type:String,
+        minLength:20,
+        maxLength:500,
+        required:true
     }
 });
 
