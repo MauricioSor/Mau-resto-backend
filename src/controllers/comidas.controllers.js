@@ -3,8 +3,8 @@ import Comida from '../models/comidas';
 
 export const obtenerComidas = async (req, res) => {
     try {
-        const recetas = await Comida.find();
-        res.status(200).json(recetas);
+        const Comidas = await Comida.find();
+        res.status(200).json(Comidas);
     } catch (error) {
         console.log(error);
         res.status(404).json({
@@ -12,7 +12,7 @@ export const obtenerComidas = async (req, res) => {
         });
     }
 };
-export const obtenerReceta = async (req, res) => {
+export const obtenerComida = async (req, res) => {
     try {
         const comida = await Comida.findById(req.params.id)
         res.status(200).json(comida);
