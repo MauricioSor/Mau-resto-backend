@@ -1,6 +1,6 @@
 import {Schema,model} from 'mongoose'
 
-const recetaSchema = new Schema({
+const comidaSchema = new Schema({
     nombre:{
         type:String,
         minLength:2,
@@ -33,5 +33,5 @@ const recetaSchema = new Schema({
     }
 });
 
-const Receta =  model('receta',recetaSchema);
+const Receta =  model('comida',comidaSchema);
 export default Receta

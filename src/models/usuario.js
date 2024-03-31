@@ -18,6 +18,10 @@ const usuarioSchema = new Schema({
         minLength:2,
         maxLength:30,
         required:true
+    },
+    rol:{
+        type:String,
+        required:true
     }
 });
 

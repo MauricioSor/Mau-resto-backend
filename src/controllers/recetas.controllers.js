@@ -1,5 +1,5 @@
 import { validationResult } from 'express-validator';
-import Receta from '../models/receta';
+import Receta from '../models/comidas';
 
 export const obtenerRecetas = async (req, res) => {
     try {
