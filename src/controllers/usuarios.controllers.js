@@ -41,8 +41,8 @@ export const crearUsuario = async (req, res) => {
 };
 export const borrarUsuario = async (req, res) => {
     try {
-        await Usuario.findByIdAndDelete(req.params.id);
-        res.status(200).json({
+        await Usuario.findOneAndRemove({email:req.body.email});
+        res.status(201).json({
             mensaje: 'El usuario se borró correctamente',
         });
     } catch (error) {
