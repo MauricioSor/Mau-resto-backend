@@ -1,9 +1,7 @@
 import Usuario from '../models/usuario';
 
-
 export const obtenerUsuarios = async (req, res) => {
     try {
-        //pedir a la BD la lista de productos
         const usuarios = await Usuario.find();
         res.status(200).json(usuarios);
     } catch (error) {
@@ -15,7 +13,6 @@ export const obtenerUsuarios = async (req, res) => {
 };
 export const obtenerUsuario = async (req, res) => {
     try {
-        console.log(req.body);
         const usuario = await Usuario.findOne({email:req.body.email,contraseña:req.body.contraseña});
         res.status(200).json({
             usuario:usuario.nombre,
@@ -30,7 +27,6 @@ export const obtenerUsuario = async (req, res) => {
 };
 export const crearUsuario = async (req, res) => {
     try {
-        console.log(req.body);
         const usuarioNuevo = new Usuario(req.body);
         await usuarioNuevo.save();
         res.status(201).json({

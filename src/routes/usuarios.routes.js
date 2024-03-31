@@ -9,8 +9,9 @@ import{
 } from '../controllers/usuarios.controllers'
 
 const router = Router();
-router.route('/users').get(obtenerUsuarios)
-router.route('/auth').get(obtenerUsuario).delete(borrarUsuario).put(editarUsuario)
-router.route('/usuario/new').post(crearUsuario)
+router.route('/usuarios').get(obtenerUsuarios)
+router.route('/autenticacion').get(obtenerUsuario)
+router.route("/modificacion").delete(borrarUsuario).put(editarUsuario)
+router.route('/usuario/nuevo').post(crearUsuario)
 
 export default router
