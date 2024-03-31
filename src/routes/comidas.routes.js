@@ -11,9 +11,9 @@ import validarProducto from "../helpers/validacionProducto";
 
 const router = Router();
 router.route('/todas').get(obtenerRecetas)
-router.route('/receta/:id').get(obtenerReceta).delete(borrarReceta)
+router.route('/comida/:id').get(obtenerReceta).delete(borrarReceta)
 .put(validarProducto,editarReceta)
-router.route('/receta/nueva')
+router.route('/comida/nueva')
 .post(validarProducto,crearReceta)
 
 export default router

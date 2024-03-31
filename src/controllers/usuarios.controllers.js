@@ -15,9 +15,12 @@ export const obtenerUsuarios = async (req, res) => {
 };
 export const obtenerUsuario = async (req, res) => {
     try {
-        //pedir a la BD la lista de productos
-        const usuario = await Usuario.findById(req.params.id);
-        res.status(200).json(usuario);
+        console.log(req.body);
+        const usuario = await Usuario.findOne({email:req.body.email,contraseña:req.body.contraseña});
+        res.status(200).json({
+            usuario:usuario.nombre,
+            rol:usuario.rol
+        });
     } catch (error) {
         console.log(error);
         res.status(404).json({
@@ -27,7 +30,7 @@ export const obtenerUsuario = async (req, res) => {
 };
 export const crearUsuario = async (req, res) => {
     try {
-        console.log(req)
+        console.log(req.body);
         const usuarioNuevo = new Usuario(req.body);
         await usuarioNuevo.save();
         res.status(201).json({
@@ -35,8 +38,7 @@ export const crearUsuario = async (req, res) => {
         });
     } catch (error) {
         console.log(error);
-        console.log(req)
-        res.status(404).json({
+        res.status(400).json({
             mensaje: 'Error al crear el usuario',
         });
     }

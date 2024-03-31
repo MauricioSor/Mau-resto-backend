@@ -10,7 +10,7 @@ import{
 
 const router = Router();
 router.route('/users').get(obtenerUsuarios)
-router.route('/search/:id').get(obtenerUsuario).delete(borrarUsuario).put(editarUsuario)
+router.route('/auth').get(obtenerUsuario).delete(borrarUsuario).put(editarUsuario)
 router.route('/usuario/new').post(crearUsuario)
 
 export default router

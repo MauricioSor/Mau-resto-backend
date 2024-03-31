@@ -25,5 +25,5 @@ app.use(express.static(path.join(__dirname,'/public')))
 //http://localhost:4004/blogRecetas
 //http://localhost:4004/apiRecetas/recetas
 //http://localhost:4004/apiRecetas/auth/users
-app.use('/apiRecetas',recetasRouter);
-app.use('/apiRecetas/auth',usuariosRouter)
+app.use('/apiComidas',recetasRouter);
+app.use('/apiUsuarios',usuariosRouter)
