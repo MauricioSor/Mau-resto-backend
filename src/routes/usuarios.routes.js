@@ -10,7 +10,7 @@ import{
 
 const router = Router();
 router.route('/usuarios').get(obtenerUsuarios)
-router.route('/autenticacion').get(obtenerUsuario)
+router.route('/autenticacion').post(obtenerUsuario)
 router.route("/modificacion").delete(borrarUsuario).put(editarUsuario)
 router.route('/usuario/nuevo').post(crearUsuario)
 
