@@ -46,7 +46,6 @@ export const borrarUsuario = async (req, res) => {
             mensaje: 'El usuario se borró correctamente',
         });
     } catch (error) {
-        console.log(error);
         res.status(404).json({
             mensaje: 'Error al borrar el usuario',
         });
@@ -54,8 +53,8 @@ export const borrarUsuario = async (req, res) => {
 };
 export const editarUsuario = async (req, res) => {
     try {
-        await Usuario.findOneAndUpdate({ _id: req.params.id }, req.body, { runValidators: true });
-        res.status(200).json({
+        await Usuario.findOneAndUpdate({ email: req.body.email }, req.body, { runValidators: true });
+        res.status(201).json({
             mensaje: 'El usuario se editó correctamente',
         });
     } catch (error) {
