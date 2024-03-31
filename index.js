@@ -4,7 +4,7 @@ import cors from 'cors';
 import path from 'path';
 import 'dotenv/config';
 import './src/database/db.connection';
-import recetasRouter from './src/routes/comidas.routes';
+import comidasRouter from './src/routes/comidas.routes';
 import usuariosRouter from './src/routes/usuarios.routes';
 
 //Configuro el puerto
@@ -25,5 +25,5 @@ app.use(express.static(path.join(__dirname,'/public')))
 //http://localhost:4004/blogRecetas
 //http://localhost:4004/apiRecetas/recetas
 //http://localhost:4004/apiRecetas/auth/users
-app.use('/apiComidas',recetasRouter);
+app.use('/apiComidas',comidasRouter);
 app.use('/apiUsuarios',usuariosRouter)

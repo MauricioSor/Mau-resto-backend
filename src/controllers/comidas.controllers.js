@@ -1,32 +1,30 @@
 import { validationResult } from 'express-validator';
-import Receta from '../models/comidas';
+import Comida from '../models/comidas';
 
-export const obtenerRecetas = async (req, res) => {
+export const obtenerComidas = async (req, res) => {
     try {
-        //pedir a la BD la lista de recetas
-        const recetas = await Receta.find();
+        const recetas = await Comida.find();
         res.status(200).json(recetas);
     } catch (error) {
         console.log(error);
         res.status(404).json({
-            mensaje: 'Error al buscar las recetas',
+            mensaje: 'Error al buscar productos',
         });
     }
 };
 export const obtenerReceta = async (req, res) => {
     try {
-        console.log(req.params.id);
-        const receta = await Receta.findById(req.params.id)
-        res.status(200).json(receta);
+        const comida = await Comida.findById(req.params.id)
+        res.status(200).json(comida);
     } catch (error) {
         console.log(error);
         res.status(404).json({
-            mensaje: 'Error no se encontro la receta',
+            mensaje: 'Error no se encontro el producto',
         });
     }
 };
 
-export const crearReceta = async (req, res) => {
+export const crearComida = async (req, res) => {
     try {
         const errors = validationResult(req);
         if(!errors.isEmpty()){
@@ -34,34 +32,34 @@ export const crearReceta = async (req, res) => {
             errores:errors.array()
         })
         }
-        const recetaNuevo = new Receta(req.body);
-        await recetaNuevo.save();
+        const comidaNueva = new Comida(req.body);
+        await comidaNueva.save();
         res.status(201).json({
-            mensaje: 'La receta se creo correctamente',
+            mensaje: 'El producto se creo correctamente',
         });
     } catch (error) {
         console.log(error);
         res.status(304).json({
-            mensaje: 'Error al crear la receta',
+            mensaje: 'Error al crear producto',
         });
     }
 };
 
-export const borrarReceta = async (req, res) => {
+export const borrarComida = async (req, res) => {
     try {
-        await Receta.findByIdAndDelete(req.params.id);
+        await Comida.findByIdAndDelete(req.params.id);
         res.status(200).json({
-            mensaje: 'La receta fue eliminada correctamente',
+            mensaje: 'El producto fue eliminado correctamente',
         });
     } catch (error) {
         console.log(error);
         res.status(400).json({
-            mensaje: 'Error no se pudo eliminar la receta',
+            mensaje: 'Error no se pudo eliminar el producto',
         });
     }
 }
 
-export const editarReceta = async (req, res) => {
+export const editarComida = async (req, res) => {
     try {
         const errors = validationResult(req);
         if(!errors.isEmpty()){
@@ -70,14 +68,14 @@ export const editarReceta = async (req, res) => {
             ,Mensaje:errors
         })
         }
-        await Receta.findOneAndUpdate({ _id: req.params.id }, req.body, { runValidators: true });
+        await Comida.findOneAndUpdate({ _id: req.params.id }, req.body, { runValidators: true });
         res.status(201).json({
-            mensaje: 'La receta fue editada correctamente',
+            mensaje: 'El producto fue editado correctamente',
         });
     } catch (error) {
         console.log(error);
         res.status(400).json({
-            mensaje: 'Error al intentar editar la receta',
+            mensaje: 'Error al intentar editar el producto',
         });
     }
 }

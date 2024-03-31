@@ -33,5 +33,5 @@ const comidaSchema = new Schema({
     }
 });
 
-const Receta =  model('comida',comidaSchema);
-export default Receta
+const Comida =  model('comida',comidaSchema);
+export default Comida

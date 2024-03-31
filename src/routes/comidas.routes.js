@@ -6,7 +6,7 @@ import{
     crearReceta,
     borrarReceta,
     editarReceta
-} from '../controllers/recetas.controllers'
+} from '../controllers/comidas.controllers'
 import validarProducto from "../helpers/validacionProducto";
 
 const router = Router();
