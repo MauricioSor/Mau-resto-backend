@@ -1,0 +1,1 @@
+import Comprobante from "../models/comprobante";

@@ -1,31 +1,29 @@
-import {Schema,model} from 'mongoose'
+import mongoose from "mongoose";
 
-const pedidoSchema = new Schema({
+const pedidoSchema = new mongoose.Schema({
+    
     cliente:{
-        type:String,
-        minLength:2,
-        maxLength:20,
-        required: true
+        type: mongoose.Schema.Types.ObjectId,
+        ref:"cliente"
     },
-    descripcion:{
+    hora:{
         type:String,
-        minLength:20,
+        minLength:10,
         maxLength:500,
         required:true
     },
-    direccion:{
+    detalle:{
         type:String,
-        minLength:8,
-        maxLength:150,
+        minLength:3,
+        maxLength:500,
         required:true
     },
-    contacto:{
+    total:{
         type:Number,
         minLength:2,
-        maxLength:20,
+        maxLength:150,
         required:true
-    },
+    }
 });
 
-const Pedido =  model('pedido',pedidoSchema);
-export default Pedido
+export default mongoose.model('pedido',pedidoSchema);
