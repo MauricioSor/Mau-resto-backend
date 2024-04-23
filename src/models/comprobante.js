@@ -1,25 +1,23 @@
 import {Schema,model} from 'mongoose'
-
 import mongoose from "mongoose";
 
 const comprobanteSchema = new mongoose.Schema({
-
-    "cliente":{
+    cliente:{
     type:mongoose.Schema.Types.ObjectId,
     ref:"cliente"
     },
-    "total":{
+    total:{
         type:Number,
     },
-    "pago":{
+    pago:{
         type:String,
     },
-    "mesa":{
+    mesa:{
         type:Number,
     },
-    "empleado":{
+    usuario:{
         type: mongoose.Schema.Types.ObjectId,
-        ref:"empleado"
+        ref:"usuario"
     }
 
 })

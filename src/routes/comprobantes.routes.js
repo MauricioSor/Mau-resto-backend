@@ -6,4 +6,5 @@ import {
     updateComprobante,
     deleteComprobante } from "../controllers/comprobantes.controllers";
 const router =Router();
+router.route("/").get(getAllComprobantes)
 export default router

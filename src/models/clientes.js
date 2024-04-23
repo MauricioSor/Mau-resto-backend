@@ -2,16 +2,15 @@ import {Schema,model} from 'mongoose'
 import mongoose from "mongoose";
 
 const clienteSchema = new mongoose.Schema({
-    "nombre":{
+    nombre:{
         type:String,
     },
-    "telefono":{
+    telefono:{
         type:String,
         
     },
-    "direccion":{
+    direccion:{
         type:String,
-        
     }
 })
 

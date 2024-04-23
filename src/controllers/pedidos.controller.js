@@ -3,7 +3,7 @@ import pedidos from "../models/pedidos";
 
 export const obtenerPedidos = async (req, res) => {
     try {
-        const pedidos = await Pedido.find();
+        const pedidos = await pedidos.find();
         res.status(200).json(pedidos);
     } catch (error) {
         console.log(error);
@@ -14,7 +14,7 @@ export const obtenerPedidos = async (req, res) => {
 };
 export const obtenerPedido = async (req, res) => {
     try {
-        const pedido = await Pedido.findOne({email:req.body.email,contraseña:req.body.contraseña});
+        const pedido = await pedidos.findOne({email:req.body.email,contraseña:req.body.contraseña});
         res.status(200).json({
             Pedido:pedido.nombre,
             rol:pedido.rol
@@ -28,7 +28,7 @@ export const obtenerPedido = async (req, res) => {
 };
 export const crearPedido = async (req, res) => {
     try {
-        const pedidoNuevo = new Pedido(req.body);
+        const pedidoNuevo = new pedidos(req.body);
         await pedidoNuevo.save();
         res.status(201).json({
             mensaje: 'El Pedido se creo correctamente',
@@ -42,7 +42,7 @@ export const crearPedido = async (req, res) => {
 };
 export const borrarPedido = async (req, res) => {
     try {
-        await Pedido.findByIdAndDelete(req.params.id);
+        await pedidos.findByIdAndDelete(req.params.id);
         res.status(201).json({
             mensaje: 'El pedido se borró correctamente',
         });
@@ -54,7 +54,7 @@ export const borrarPedido = async (req, res) => {
 };
 export const editarPedido = async (req, res) => {
     try {
-        await Pedido.findOneAndUpdate({ email: req.body.email }, req.body, { runValidators: true });
+        await pedidos.findOneAndUpdate({ email: req.body.email }, req.body, { runValidators: true });
         res.status(201).json({
             mensaje: 'El pedido se editó correctamente',
         });

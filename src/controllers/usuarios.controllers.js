@@ -14,7 +14,8 @@ export const obtenerUsuarios = async (req, res) => {
 };
 export const obtenerUsuario = async (req, res) => {
     try {
-        const usuario = await Usuario.findOne({email:req.body.email,contraseña:req.body.contraseña});
+        const usuario = await Usuario.findOne({email:req.body.email,contraseña:req.body.contraseña})
+        .populate('rol',"_id nombre")
         res.status(200).json({
             usuario:usuario.nombre,
             rol:usuario.rol
