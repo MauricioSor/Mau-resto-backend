@@ -1,4 +1,5 @@
-import Pedido from '../models/pedidos';
+import pedidos from "../models/pedidos";
+
 
 export const obtenerPedidos = async (req, res) => {
     try {

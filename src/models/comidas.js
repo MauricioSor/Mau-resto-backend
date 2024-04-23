@@ -1,6 +1,7 @@
 import {Schema,model} from 'mongoose'
+import mongoose from 'mongoose';
 
-const comidaSchema = new Schema({
+const comidaSchema = new mongoose.Schema({
     nombre:{
         type:String,
         minLength:2,
@@ -33,5 +34,5 @@ const comidaSchema = new Schema({
     }
 });
 
-const Comida =  model('comida',comidaSchema);
-export default Comida
+
+export default mongoose.model('comida',comidaSchema);

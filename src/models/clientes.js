@@ -4,7 +4,6 @@ import mongoose from "mongoose";
 const clienteSchema = new mongoose.Schema({
     "nombre":{
         type:String,
-        
     },
     "telefono":{
         type:String,
@@ -16,5 +15,4 @@ const clienteSchema = new mongoose.Schema({
     }
 })
 
-const Cliente = mongoose.model("clientes",clienteSchema);
-export default Cliente
+export default mongoose.model("cliente",clienteSchema);

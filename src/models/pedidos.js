@@ -1,7 +1,6 @@
 import mongoose from "mongoose";
 
 const pedidoSchema = new mongoose.Schema({
-    
     cliente:{
         type: mongoose.Schema.Types.ObjectId,
         ref:"cliente"

@@ -18,11 +18,10 @@ const comprobanteSchema = new mongoose.Schema({
         type:Number,
     },
     "empleado":{
-        type:mongoose.schema.type.ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
         ref:"empleado"
     }
 
 })
 
-const Comprobante = mongoose.model ("comprobante",comprobanteSchema);
-export default Comprobante
+export default mongoose.model("comprobante",comprobanteSchema);

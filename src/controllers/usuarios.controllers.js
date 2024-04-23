@@ -2,7 +2,8 @@ import Usuario from '../models/usuario';
 
 export const obtenerUsuarios = async (req, res) => {
     try {
-        const usuarios = await Usuario.find();
+        const usuarios = await Usuario.find()
+        .populate('rol',"_id nombre")
         res.status(200).json(usuarios);
     } catch (error) {
         console.log(error);

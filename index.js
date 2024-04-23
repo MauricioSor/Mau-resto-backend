@@ -6,7 +6,11 @@ import 'dotenv/config';
 import './src/database/db.connection';
 import comidasRouter from './src/routes/comidas.routes';
 import usuariosRouter from './src/routes/usuarios.routes';
-import pedidosRouter from "./src/routes/pedidos.routes"
+import pedidosRouter from "./src/routes/pedidos.routes";
+import clientesRouter from "./src/routes/clientes.routes";
+import comprobantesRouter from "./src/routes/comprobantes.routes";
+import rolesRouter from "./src/routes/roles.routes";
+
 //Configuro el puerto
 
 const app = express();
@@ -28,3 +32,7 @@ app.use(express.static(path.join(__dirname,'/public')))
 app.use('/apiComidas',comidasRouter);
 app.use("/apiPedidos",pedidosRouter);
 app.use('/apiUsuarios',usuariosRouter);
+
+app.use('/apiClientes',clientesRouter);
+app.use('/apiRoles',rolesRouter);
+app.use('/apiComprobantes',comprobantesRouter);

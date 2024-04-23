@@ -5,4 +5,4 @@ const rolesSchema = new mongoose.Schema({
     "nombre":String
 })
 
-const Roles = model("roles",rolesSchema)
+export default mongoose.model("roles",rolesSchema)
