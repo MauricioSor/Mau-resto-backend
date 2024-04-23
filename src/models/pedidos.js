@@ -12,10 +12,8 @@ const pedidoSchema = new mongoose.Schema({
         required:true
     },
     detalle:{
-        type:String,
-        minLength:3,
-        maxLength:500,
-        required:true
+        type:[mongoose.Schema.Types.ObjectId],
+        ref:"comida"
     },
     total:{
         type:Number,

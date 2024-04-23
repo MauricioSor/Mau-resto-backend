@@ -1,9 +1,11 @@
-import pedidos from "../models/pedidos";
+import pedido from "../models/pedidos";
 
 
 export const obtenerPedidos = async (req, res) => {
     try {
-        const pedidos = await pedidos.find();
+        const pedidos = await pedido.find()
+        .populate("cliente","_id nombre direccion telefono")
+        .populate("detalle","_id nombre precio")
         res.status(200).json(pedidos);
     } catch (error) {
         console.log(error);
