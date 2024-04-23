@@ -9,10 +9,7 @@ import{
 } from '../controllers/pedidos.controller'
 
 const router = Router();
-router.route('/pedidos').get(obtenerPedidos)
-router.route('/buscar').get(obtenerPedido)
-router.route("/pedidos/modificacion").put(editarPedido)
-router.route("/pedidos/eliminar/:id").delete(borrarPedido)
-router.route('/pedidos/nuevo').post(crearPedido)
-
+router.route('/').get(obtenerPedidos)
+router.route('/:id').get(obtenerPedido).put(editarPedido).delete(borrarPedido)
+router.route('/nuevo').post(crearPedido)
 export default router

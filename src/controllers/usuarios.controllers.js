@@ -55,7 +55,6 @@ export const borrarUsuario = async (req, res) => {
 };
 export const editarUsuario = async (req, res) => {
     try {
-        console.log(req.body)
         await Usuario.findOneAndUpdate({ email: req.body.email }, req.body, { runValidators: true });
         res.status(201).json({
             mensaje: 'El usuario se editó correctamente',
