@@ -26,12 +26,7 @@ export const obtenerComida = async (req, res) => {
 
 export const crearComida = async (req, res) => {
     try {
-        const errors = validationResult(req);
-        if(!errors.isEmpty()){
-        return res.status(400).json({
-            errores:errors.array()
-        })
-        }
+        console.log(req.body);
         const comidaNueva = new Comida(req.body);
         await comidaNueva.save();
         res.status(201).json({
@@ -61,15 +56,8 @@ export const borrarComida = async (req, res) => {
 
 export const editarComida = async (req, res) => {
     try {
-/*         const errors = validationResult(req);
-        if(!errors.isEmpty()){
-        return res.status(400).json({
-            errores:errors.array()
-            ,Mensaje:errors
-        })
-        } */
-        await Comida.findOneAndUpdate({ _id: req.params.id }, req.body);
-        
+        console.log(req.body.body);
+        await Comida.findOneAndUpdate( req.body._id,req.body.body);
         res.status(201).json({
             mensaje: 'El producto fue editado correctamente',
         });
