@@ -61,14 +61,15 @@ export const borrarComida = async (req, res) => {
 
 export const editarComida = async (req, res) => {
     try {
-        const errors = validationResult(req);
+/*         const errors = validationResult(req);
         if(!errors.isEmpty()){
         return res.status(400).json({
             errores:errors.array()
             ,Mensaje:errors
         })
-        }
-        await Comida.findOneAndUpdate({ _id: req.params.id }, req.body, { runValidators: true });
+        } */
+        await Comida.findOneAndUpdate({ _id: req.params.id }, req.body);
+        
         res.status(201).json({
             mensaje: 'El producto fue editado correctamente',
         });
