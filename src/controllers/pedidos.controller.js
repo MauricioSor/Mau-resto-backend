@@ -14,9 +14,23 @@ export const obtenerPedidos = async (req, res) => {
         });
     }
 };
+
+export const obtenerPedidosPorEstado = async (req, res) => {
+    try {
+        const pedidos = await pedido.find({estado:req.body.estado})
+        .populate("cliente","_id nombre direccion telefono")
+        .populate("detalle","_id nombre precio")
+        res.status(200).json(pedidos);
+    } catch (error) {
+        console.log(error);
+        res.status(404).json({
+            mensaje: 'Error al buscar pedidosxxxxx',
+        });
+    }
+};
 export const obtenerPedido = async (req, res) => {
     try {
-        const pedido = await pedidos.findOne({email:req.body.email,contraseña:req.body.contraseña});
+        const pedido = await pedido.findOne({email:req.body.email,contraseña:req.body.contraseña});
         res.status(200).json({
             Pedido:pedido.nombre,
             rol:pedido.rol
@@ -30,7 +44,7 @@ export const obtenerPedido = async (req, res) => {
 };
 export const crearPedido = async (req, res) => {
     try {
-        const pedidoNuevo = new pedidos(req.body);
+        const pedidoNuevo = new pedido(req.body);
         await pedidoNuevo.save();
         res.status(201).json({
             mensaje: 'El Pedido se creo correctamente',
@@ -44,7 +58,7 @@ export const crearPedido = async (req, res) => {
 };
 export const borrarPedido = async (req, res) => {
     try {
-        await pedidos.findByIdAndDelete(req.params.id);
+        await pedido.findByIdAndDelete(req.params.id);
         res.status(201).json({
             mensaje: 'El pedido se borró correctamente',
         });
@@ -56,7 +70,7 @@ export const borrarPedido = async (req, res) => {
 };
 export const editarPedido = async (req, res) => {
     try {
-        await pedidos.findOneAndUpdate({ email: req.body.email }, req.body, { runValidators: true });
+        await pedido.findOneAndUpdate({ email: req.body.email }, req.body, { runValidators: true });
         res.status(201).json({
             mensaje: 'El pedido se editó correctamente',
         });

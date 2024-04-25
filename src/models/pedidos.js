@@ -11,6 +11,9 @@ const pedidoSchema = new mongoose.Schema({
         maxLength:500,
         required:true
     },
+    estado:{
+        type:String
+    },
     detalle:{
         type:[mongoose.Schema.Types.ObjectId],
         ref:"comida"
