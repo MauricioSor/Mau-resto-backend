@@ -1,8 +1,8 @@
 import Cliente from "../models/clientes";
 
-export const getAllClientes = async(res) => {
+export const getAllClientes = async(req,res) => {
     try {
-        const clientes = await Cliente.find({})
+        const clientes = await Cliente.find()
         return res.status(200).json(clientes)
     } catch (error) {
         return res.status(400).json(error)
