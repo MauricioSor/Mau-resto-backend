@@ -55,12 +55,14 @@ export const borrarUsuario = async (req, res) => {
 };
 export const editarUsuario = async (req, res) => {
     try {
-        await Usuario.findOneAndUpdate({ email: req.body.email }, req.body, { runValidators: true });
-        res.status(201).json({
+        
+        const usuarioActualizado = await Usuario.findOneAndUpdate(
+            { _id: req.params.id },req.body.usuario);
+            console.log(usuarioActualizado);        
+            res.status(201).json({
             mensaje: 'El usuario se editó correctamente',
         });
     } catch (error) {
-        console.log(error);
         res.status(404).json({
             mensaje: 'Error al editar el usuario',
         });

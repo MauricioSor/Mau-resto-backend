@@ -17,7 +17,8 @@ export const obtenerPedidos = async (req, res) => {
 
 export const obtenerPedidosPorEstado = async (req, res) => {
     try {
-        const pedidos = await pedido.find({estado:req.body.estado})
+        console.log(req.params.estado);
+        const pedidos = await pedido.find({estado:req.params.estado})
         .populate("cliente","_id nombre direccion telefono")
         .populate("detalle","_id nombre precio")
         res.status(200).json(pedidos);
