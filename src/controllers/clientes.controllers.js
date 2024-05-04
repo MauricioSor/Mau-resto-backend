@@ -26,18 +26,23 @@ export const createCliente = async(req,res) => {
     }
 }
 
-export const updateCliente = () => {
+export const updateCliente = async(req,res) => {
     try {
-
+        console.log(req.body);
+        console.log(req.params.id);
+        await Cliente.findByIdAndUpdate({_id:req.params.id},req.body)
+        return res.status(201).json("Modificacion exitosa")
     } catch (error) {
         return res.status(400).json(error)
 
     }
 }
 
-export const deleteCliente = () => {
-    try {
-
+export const deleteCliente = async(req,res) => {
+    try {   
+        
+        await Cliente.findByIdAndDelete({_id:req.params.id})
+        return res.status(201).json("Borrado exitosamente");
     } catch (error) {
         return res.status(400).json(error)
 
