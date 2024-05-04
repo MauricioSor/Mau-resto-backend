@@ -70,8 +70,6 @@ export const borrarPedido = async (req, res) => {
 };
 export const editarPedido = async (req, res) => {
     try {
-        console.log(req.params.id)
-        console.log(req.body.body);
         await pedido.findOneAndUpdate({ _id: req.params.id }, req.body.body);
         res.status(201).json({
             mensaje: 'El pedido se editó correctamente',
