@@ -1,7 +1,7 @@
-import router from "./clientes.routes";
+import { Router } from "express";
 import { getAllMesas,editarMesa } from "../controllers/mesas.controllers";
 
-const route=router();
-route("/").get(getAllMesas)
-route("/:id").put(editarMesa)
+const router = Router();
+router.route("/").get(getAllMesas)
+router.route("/:id").put(editarMesa)
 export default router

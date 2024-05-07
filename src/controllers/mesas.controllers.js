@@ -1,11 +1,10 @@
 import mesa from "../models/mesa";
 
-
 export const getAllMesas =async(req,res)=>{
     try {
-        const comprobante= await mesa.find()
-        .populate("usuario","_id nombre email")
-        res.status(200).json(comprobante)
+        const mesas= await mesa.find()
+        .populate("usuario","_id nombre ")
+        res.status(200).json(mesas)
     } catch (error) {
         res.status(400).json(error)
     }
