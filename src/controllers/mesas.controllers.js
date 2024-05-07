@@ -2,7 +2,7 @@ import mesa from "../models/mesa";
 
 export const getAllMesas =async(req,res)=>{
     try {
-        const mesas= await mesa.find()
+        const mesas = await mesa.find({});
         res.status(200).json(mesas)
     } catch (error) {
         res.status(400).json(error)
