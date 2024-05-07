@@ -10,7 +10,7 @@ import pedidosRouter from "./src/routes/pedidos.routes";
 import clientesRouter from "./src/routes/clientes.routes";
 import comprobantesRouter from "./src/routes/comprobantes.routes";
 import rolesRouter from "./src/routes/roles.routes";
-
+import mesasRouter from "./src/routes/mesas.routes"
 //Configuro el puerto
 
 const app = express();
@@ -35,4 +35,5 @@ app.use('/apiUsuarios',usuariosRouter);
 
 app.use('/apiClientes',clientesRouter);
 app.use('/apiRoles',rolesRouter);
+app.use('/apiMesas',mesasRouter);
 app.use('/apiComprobantes',comprobantesRouter);

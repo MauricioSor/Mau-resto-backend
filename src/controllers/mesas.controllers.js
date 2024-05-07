@@ -1,0 +1,27 @@
+import mesa from "../models/mesa";
+
+
+export const getAllMesas =async(req,res)=>{
+    try {
+        const comprobante= await mesa.find()
+        .populate("usuario","_id nombre email")
+        res.status(200).json(comprobante)
+    } catch (error) {
+        res.status(400).json(error)
+    }
+}
+
+export const editarMesa = async (req, res) => {
+    try {
+        console.log(req.body.body);
+        await Comida.findOneAndUpdate( req.body._id,req.body.body);
+        res.status(201).json({
+            mensaje: 'El producto fue editado correctamente',
+        });
+    } catch (error) {
+        console.log(error);
+        res.status(400).json({
+            mensaje: 'Error al intentar editar el producto',
+        });
+    }
+}
