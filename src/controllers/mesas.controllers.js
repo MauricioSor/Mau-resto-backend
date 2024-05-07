@@ -11,15 +11,15 @@ export const getAllMesas =async(req,res)=>{
 
 export const editarMesa = async (req, res) => {
     try {
-        console.log(req.body.body);
-        await Comida.findOneAndUpdate( req.body._id,req.body.body);
+        console.log(req.body);
+        await mesa.findOneAndUpdate( req.body._id,req.body.mesa);
         res.status(201).json({
-            mensaje: 'El producto fue editado correctamente',
+            mensaje: 'La mesa se actualizo correctamente',
         });
     } catch (error) {
         console.log(error);
         res.status(400).json({
-            mensaje: 'Error al intentar editar el producto',
+            mensaje: 'Error al intentar editar mesa',
         });
     }
 }
