@@ -29,7 +29,7 @@ export const createCliente = async(req,res) => {
 
 export const updateCliente = async(req,res) => {
     try {
-        await Cliente.findByIdAndUpdate({_id:req.params.id},req.body)
+        await Cliente.findByIdAndUpdate({_id:req.params.id},req.body.cliente)
         return res.status(201).json("Modificacion exitosa")
     } catch (error) {
         return res.status(400).json(error)

@@ -2,12 +2,12 @@ import comprobante from "../models/comprobante";
 
 export const getAllComprobantes =async(req,res)=>{
     try {
-        const comprobante= await comprobante.find()
-        .populate("cliente","_id nombre direccion telefono")
-        .populate("usuario","_id nombre email")
-        res.status(200).json(comprobante)
+        const comprobantes= await comprobante.find()
+        .populate("cliente","_id nombre")
+        .populate("usuario","_id nombre")
+        return res.status(200).json(comprobantes)
     } catch (error) {
-        res.status(400).json(error)
+        return res.status(400).json(error)
     }
 }
 export const getComprobante =(req,res)=>{
