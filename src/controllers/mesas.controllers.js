@@ -11,8 +11,9 @@ export const getAllMesas =async(req,res)=>{
 
 export const editarMesa = async (req, res) => {
     try {
-        console.log(req.body);
-        await mesa.findOneAndUpdate( req.body._id,req.body.mesa);
+        console.log(req.params.id);
+        console.log(req.body.mesa);
+        await mesa.findOneAndUpdate( {_id:req.params.id},req.body.mesa);
         res.status(201).json({
             mensaje: 'La mesa se actualizo correctamente',
         });

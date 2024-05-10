@@ -1,9 +1,8 @@
-import Comprobante from "../models/comprobante";
-
+import comprobante from "../models/comprobante";
 
 export const getAllComprobantes =async(req,res)=>{
     try {
-        const comprobante= await Comprobante.find()
+        const comprobante= await comprobante.find()
         .populate("cliente","_id nombre direccion telefono")
         .populate("usuario","_id nombre email")
         res.status(200).json(comprobante)
@@ -11,40 +10,40 @@ export const getAllComprobantes =async(req,res)=>{
         res.status(400).json(error)
     }
 }
-export const getComprobante =()=>{
+export const getComprobante =(req,res)=>{
     try {
-
+        const comprobanteBuscado = comprobante.findById(req.params.id)
+        return res.status(200).json(comprobanteBuscado)
     } catch (error) {
-        res.status(400).json(error)
-
+        return res.status(400).json(error)
     }
 }
 
-export const createComprobante =()=>{
+export const createComprobante =async(req,res)=>{
     try {
-
+        console.log(req.body.comprobante);
+        const comprobanteNuevo = new comprobante(req.body.comprobante)
+        await comprobanteNuevo.save()
+        return res.status(200).json("Creado correctamente")
     } catch (error) {
-        res.status(400).json(error)
-
+        return res.status(400).json(error)
     }
 }
 
-export const updateComprobante =()=>{
+export const borrarComprobante =async(req,res)=>{
     try {
-
+        await comprobante.findByIdAndDelete(req.params.id)
     } catch (error) {
-        res.status(400).json(error)
-
+        return res.status(400).json(error)
     }
-    
 }
 
-export const deleteComprobante =()=>{
+export const actualizarComprobante =async(req,res)=>{
     try {
-
+        await comprobante.findOneAndUpdate({_id:req.body},req.body)
+        return res.status(200).json("Editado correctamente")
     } catch (error) {
-        res.status(400).json(error)
-
+        return res.status(400).json(error)
     }
     
 }

@@ -3,10 +3,10 @@ import {
     getAllComprobantes,
     getComprobante,
     createComprobante,
-    updateComprobante,
-    deleteComprobante } from "../controllers/comprobantes.controllers";
+    actualizarComprobante,
+    borrarComprobante } from "../controllers/comprobantes.controllers";
 const router =Router();
 router.route("/").get(getAllComprobantes)
 router.route("/crear").post(createComprobante)
-router.route("/:id").put(updateComprobante).delete(deleteComprobante).get(getComprobante)
+router.route("/:id").put(actualizarComprobante).delete(borrarComprobante).get(getComprobante)
 export default router

@@ -26,7 +26,6 @@ export const obtenerComida = async (req, res) => {
 
 export const crearComida = async (req, res) => {
     try {
-        console.log(req.body);
         const comidaNueva = new Comida(req.body);
         await comidaNueva.save();
         res.status(201).json({

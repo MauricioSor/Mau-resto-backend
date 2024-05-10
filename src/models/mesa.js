@@ -14,9 +14,8 @@ const mesasSchema = new mongoose.Schema({
     pago:{
         type:String
     },
-    empleado:{
-        type:mongoose.Schema.Types.ObjectId,
-        ref:"usuario"
+    detalle:{
+        type:String,
     }
 
 })

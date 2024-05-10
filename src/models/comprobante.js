@@ -9,17 +9,20 @@ const comprobanteSchema = new mongoose.Schema({
     total:{
         type:Number,
     },
+    detalle:{
+        type:String,
+    },
     pago:{
         type:String,
     },
     mesa:{
-        type:Number,
+        type:mongoose.Schema.Types.Number,
+        ref:"mesa"
     },
     usuario:{
         type: mongoose.Schema.Types.ObjectId,
         ref:"usuario"
     }
-
 })
 
 export default mongoose.model("comprobante",comprobanteSchema);
